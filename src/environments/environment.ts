@@ -3,7 +3,18 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  url_token:'https://tclappsdev.auth.us-east-1.amazoncognito.com/oauth2/token',
+  url_toyota:'https://apitest.tclapps.com',
+
+  
+  
+  xhostRef:'backoffice',
+  ClientID: '1tf9o7dt8q61784l35lq52voga',
+  ClientSecret: 'epqecmtt5pjob86ja68pjr57bub87ik759nsiu07vollg4absh1',
+  Scope: 'apiauthtcldev/read',
+  grant_type:'client_credentials'
+
 };
 
 /*

@@ -1,0 +1,28 @@
+
+{
+
+    "/cltveh":{
+        "target":"https://apitest.tclapps.com",
+        "secure":true,
+        "changeOrigin":true,
+        "logLevel":"debug"
+    },
+    "/cliente":{
+        "target":"https://apitest.tclapps.com",
+        "secure":true,
+        "changeOrigin":true,
+        "logLevel":"debug"
+    },
+    "/vehiculo":{
+        "target":"https://apitest.tclapps.com",
+        "secure":true,
+        "changeOrigin":true,
+        "logLevel":"debug"
+    },
+    "/cliente/vehiculo":{
+        "target":"https://apitest.tclapps.com",
+        "secure":true,
+        "changeOrigin":true,
+        "logLevel":"debug"
+    }
+}

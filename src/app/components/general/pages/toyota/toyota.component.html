@@ -1,0 +1,23 @@
+<h1>TOYOTA</h1>
+
+<div class="row">
+  <div class="d-grid gap-2 col-2">
+    <button class="btn btn-primary" type="button" (click)="token()">Token</button>
+    <button class="btn btn-primary btn-sm" type="button" (click)="parrilla()">Parrilla</button>
+    <button class="btn btn-primary btn-sm" type="button" (click)="cliente('165413219')">Cliente</button>
+    <button class="btn btn-primary btn-sm" type="button" (click)="vehiculo('UR5855')">Vehiculo</button>
+    <button class="btn btn-primary btn-sm" type="button" (click)="clienteVehiculo('165413219')">cliente/vehiculo</button>
+    <button class="btn btn-secondary btn-sm" type="button" (click)="clienteVehiculoPost()">cliente/vehiculo</button>
+  </div>
+    <div class="col-10">
+      <div class="card text-dark bg-light mb-3" style="width: 95%;">
+        <div class="card-header">{{titulo}}</div>
+        <div class="card-body">
+          <h5 class="card-title">{{subtitulo}}</h5>
+          <p class="card-text">{{resp|json}}</p>
+        </div>
+      </div>
+    </div>
+</div>
+
+
