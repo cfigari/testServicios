@@ -1,14 +1,24 @@
 <h1>TOYOTA</h1>
 
-<div class="row">
+ <div class="row">
+
+
+
   <div class="d-grid gap-2 col-2">
-    <button class="btn btn-primary" type="button" (click)="token()">Token</button>
-    <button class="btn btn-primary btn-sm" type="button" (click)="parrilla()">Parrilla</button>
-    <button class="btn btn-primary btn-sm" type="button" (click)="cliente('165413219')">Cliente</button>
-    <button class="btn btn-primary btn-sm" type="button" (click)="vehiculo('UR5855')">Vehiculo</button>
-    <button class="btn btn-primary btn-sm" type="button" (click)="clienteVehiculo('165413219')">cliente/vehiculo</button>
-    <button class="btn btn-secondary btn-sm" type="button" (click)="clienteVehiculoPost()">cliente/vehiculo</button>
+    
+    <ul class="list-group">
+      <li class="list-group-item active" aria-current="true"><button class="btn btn-primary" type="button" style="height: 40px;"  (click)="token()">Token</button></li>
+      <li class="list-group-item  active" ><button class="btn btn-primary btn-sm" type="button" style="height: 40px;" (click)="parrilla()">Parrilla</button></li>
+      <li class="list-group-item  active"><button class="btn btn-primary btn-sm" type="button" style="height: 40px;"   (click)="cliente('165413219')">Cliente</button></li>
+      <li class="list-group-item  active"><button class="btn btn-primary btn-sm" type="button" style="height: 40px;" (click)="vehiculo('UR5855')">Vehiculo</button></li>
+      <li class="list-group-item  active"><button class="btn btn-primary btn-sm" type="button" style="height: 40px;" (click)="clienteVehiculo('165413219')">cliente/vehiculo get</button></li>
+      <li class="list-group-item  active"><button class="btn btn-primary btn-sm" type="button" style="height: 40px;" (click)="clienteVehiculoPost()">cliente/vehiculo post</button></li>
+    </ul> 
+    
   </div>
+
+
+
     <div class="col-10">
       <div class="card text-dark bg-light mb-3" style="width: 95%;">
         <div class="card-header">{{titulo}}</div>
@@ -19,5 +29,7 @@
       </div>
     </div>
 </div>
+
+
 
 

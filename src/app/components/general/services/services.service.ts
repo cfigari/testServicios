@@ -17,70 +17,16 @@ export class ServicesService {
 
  parrilla():Observable<Parrilla>{
 
-  //const urlParrilla= environment.url_toyota + "/cltveh"
   const urlParrilla= "/cltveh"
   const body={};
 
-  let token=this.auth.getAuthorizationToken();
+  let token=this.auth.getAuthorizationToken("GET");
 
   return this.http.get<Parrilla>(urlParrilla , {
     responseType: 'json',
     headers: new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded'
       })
-  })
- }
-
- cliente(rut:string):Observable<any>{
-  
-
-  let token=this.auth.getAuthorizationToken();
-
-console.log(rut);
-  const parametro = new HttpParams()
-  .append("rut",rut)
-
-  const body={"rut":rut}
-  const urlCliente=  `/cliente`
-
-  return this.http.get<any>(urlCliente ,  {
-    responseType: 'json',
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-      }),
-      params:parametro
-  })
- }
-
- Vehiculo(patente:string):Observable<Vehiculo>{
-
-  const urlVehiculo=`/vehiculo/${patente}`
-  const body={};
-
-  let token=this.auth.getAuthorizationToken();
-
-  return this.http.get<Vehiculo>(urlVehiculo , {
-    responseType: 'json',
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-      })
-
-  })
- }
-
- ClienteVehiculo(rut:string):Observable<Vehiculo>{
-
-  const urlVehiculo=`/cliente/vehiculo?rut=${rut}`
-  const body={};
-
-  let token=this.auth.getAuthorizationToken();
-
-  return this.http.get<Vehiculo>(urlVehiculo , {
-    responseType: 'json',
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-      })
-
   })
  }
 
@@ -94,10 +40,13 @@ console.log(rut);
     "hora":"155604",
     "vin":"JTDBT92338116606",
     "origen":"CHILE",
-    "sattus":""
+    "status":""
   };
 
-  let token=this.auth.getAuthorizationToken();
+  const  formBody = 'stock=' + body.stock + '&rut=' +body.rut+ '&fecha=' + body.fecha+ '&hora='+ body.hora  + '&vin=' + body.hora + '&origen='+ body.origen + '&status='+body.status
+
+ 
+  let token=this.auth.getAuthorizationToken("POST");
 
   return this.http.post<Vehiculo>(urlVehiculo ,body, {
     responseType: 'json',
@@ -108,57 +57,127 @@ console.log(rut);
   })
  }
 
+ Vehiculo(patente:string):Observable<Vehiculo>{
 
-
- //************************************************************************************ */
- parrillaBO():Observable<ParrillaBO>{
-
-  const urlParrilla= 'https://z3odomfua2.execute-api.us-east-1.amazonaws.com/test/parrillaitvis'
+  const urlVehiculo=`/vehiculo/${patente}`
   const body={};
 
-  return this.http.get<ParrillaBO>(urlParrilla,body ); 
+  let token=this.auth.getAuthorizationToken("GET");
 
-}
-
-bitacora():Observable<any>{
-
-  const vin='JTMZ43FV1MD035521'
-  const rut='11439432-3'
-
-  const params = new HttpParams()
-        .set("vin",vin)
-        .set("rut",rut)
-
-   const urlParrilla= `https://z3odomfua2.execute-api.us-east-1.amazonaws.com/test/bitacora?${params.toString()}` 
- 
-  const body={};
-
-  return this.http.get<any>(urlParrilla)
-
-}
-
-
-crearUsuario():Observable<OkUsuario>{
-
-    const userId= "jperez"
-    const email= "jperez@perez.com"
-    const name= "juan Perez L"
-    const password= "123456"
-    const position= "1"
-    const status= "1"
-  
-
-  const  formBody =`userId=${userId}&email=${email}&name=${name}&password=${password}&position=${position}&status=${status}`  
-  const urlParrilla= 'https://z3odomfua2.execute-api.us-east-1.amazonaws.com/test/login/nuevo'
- 
-    return this.http.post<OkUsuario>(urlParrilla,formBody , {
+  return this.http.get<Vehiculo>(urlVehiculo , {
     responseType: 'json',
     headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-        })
-    })
+      'Content-Type': 'application/json'
+      })
+
+  })
+ } 
+
+ cliente(rut:string):Observable<any>{
+  const urlCliente=  "/clientetoyota";
+  const  formBody = '{"rut":"140094471"}'  
+  console.log(urlCliente);
+  return this.http.post(urlCliente,formBody)
+ }
+
+ ClienteVehiculo(rut:string):Observable<Vehiculo>{
+
+  const urlVehiculo=`/cliente/vehiculo?rut=${rut}`
+  const body={};
+  let token=this.auth.getAuthorizationToken("GET");
+  return this.http.get<Vehiculo>(urlVehiculo , {
+    responseType: 'json',
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+      })
+
+  })
+ }
+
+ //************************************************************************************ */
+bitacora(vin:string,rut:string):Observable<any>{
+  const urlBitacora= "/bitacora"
+  const formbody={"vin":vin,"rut":rut};
+  return this.http.post<any>(urlBitacora,formbody)
 
 }
+bitacoranew(vin:string,rut:string,obs:string,file:string,estado:string,fecha:string,hora:string,userId:string):Observable<any>{
+
+  const urlBitacora= "/bitacoranew"
+ 
+  const formbody={
+    "vin": vin,
+    "rut": rut,
+    "obs": obs,
+    "file": file,
+    "estado": estado,
+    "fecha": fecha,
+    "hora": hora,
+    "userId": userId
+  };
+  console.log(formbody);
+
+  return this.http.post<any>(urlBitacora,formbody)
+
+}
+
+Login(usuario:string, psw:string):Observable<any>{
+  
+  const urlLogin="/login"
+  const body={
+    "userId": usuario,
+    "password": psw
+  };
+
+  return this.http.post<any>(urlLogin,body)
+
+}
+
+usuarios():Observable<any>{
+  
+  const urlLogin="/usuarios"
+
+  return this.http.get<any>(urlLogin)
+
+}
+
+usuario(usuario:string):Observable<any>{
+  
+  const urlLogin="/usuario"
+  const body={
+    "userId": usuario
+  };
+
+  return this.http.post<any>(urlLogin,body)
+
+}
+usuarionew(userId:string,email:string,nombre:string,psw:string,position:string,estado:string):Observable<any>{
+  
+  const urlLogin="/usuarionew"
+  const body={
+    "userId": userId,
+    "email": email,
+    "name": nombre,
+    "password": psw,
+    "position": position,
+    "status": estado
+  }
+
+  return this.http.post<any>(urlLogin,body)
+
+}
+
+usuariodel(usuario:string):Observable<any>{
+  
+  const urlLogin="/usuariodel"
+  const body={
+    "userId": usuario
+  };
+
+  return this.http.post<any>(urlLogin,body)
+
+}
+
 
 
 

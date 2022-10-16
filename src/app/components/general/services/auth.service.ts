@@ -10,8 +10,6 @@ export class AuthService {
 
   constructor( private http: HttpClient) { 
 
-    this.ttoken ()
-    .subscribe();
   }
 
   private urlToken :string = environment.url_token
@@ -19,9 +17,10 @@ export class AuthService {
   private token_type:string=""
   private expires_in:number=0
 
- private  ttoken ():Observable<Token>{
+ private  ttoken (metodo:string):Observable<Token>{
     
-    const  formBody = 'client_id=' + environment.ClientID + '&client_secret=' +environment.ClientSecret + '&grant_type=' + environment.grant_type+ '&scope='+ environment.Scope
+  let scope:string=environment.Scope
+    const  formBody = 'client_id=' + environment.ClientID + '&client_secret=' +environment.ClientSecret + '&grant_type=' + environment.grant_type+ '&scope='+ scope
  
    return  this.http.post<Token>(this.urlToken,formBody, {
     responseType: 'json',
@@ -41,8 +40,8 @@ export class AuthService {
     )
 
   }
-
-  public getAuthorizationToken():string{
+  public getAuthorizationToken(metodo:string):string{
+    this.ttoken (metodo).subscribe();
     return this.token;
   }
 

@@ -13,6 +13,7 @@ export const environment = {
   ClientID: '1tf9o7dt8q61784l35lq52voga',
   ClientSecret: 'epqecmtt5pjob86ja68pjr57bub87ik759nsiu07vollg4absh1',
   Scope: 'apiauthtcldev/read',
+  ScopeP: 'apiauthtcldev/update',
   grant_type:'client_credentials'
 
 };

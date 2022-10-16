@@ -7,12 +7,7 @@
         "changeOrigin":true,
         "logLevel":"debug"
     },
-    "/cliente":{
-        "target":"https://apitest.tclapps.com",
-        "secure":true,
-        "changeOrigin":true,
-        "logLevel":"debug"
-    },
+
     "/vehiculo":{
         "target":"https://apitest.tclapps.com",
         "secure":true,
@@ -24,5 +19,55 @@
         "secure":true,
         "changeOrigin":true,
         "logLevel":"debug"
+    },
+    "/clientetoyota":{
+        "target":"https://apibackoffice.tclapps.com",
+        "secure":true,
+        "changeOrigin":true,
+        "logLevel":"debug"
+    },
+    "/login":{
+        "target":"https://apibackoffice.tclapps.com",
+        "secure":true,
+        "changeOrigin":true,
+        "logLevel":"debug"
     }
+    ,
+    "/bitacora":{
+        "target":"https://apibackoffice.tclapps.com",
+        "secure":true,
+        "changeOrigin":true,
+        "logLevel":"debug"
+    },
+    "/bitacoranew":{
+        "target":"https://apibackoffice.tclapps.com",
+        "secure":true,
+        "changeOrigin":true,
+        "logLevel":"debug"
+    },
+    "/usuarios":{
+        "target":"https://apibackoffice.tclapps.com",
+        "secure":true,
+        "changeOrigin":true,
+        "logLevel":"debug"
+    },
+    "/usuario":{
+        "target":"https://apibackoffice.tclapps.com",
+        "secure":true,
+        "changeOrigin":true,
+        "logLevel":"debug"
+    },
+    "/usuarionew":{
+        "target":"https://apibackoffice.tclapps.com",
+        "secure":true,
+        "changeOrigin":true,
+        "logLevel":"debug"
+    },
+    "/usuariodel":{
+        "target":"https://apibackoffice.tclapps.com",
+        "secure":true,
+        "changeOrigin":true,
+        "logLevel":"debug"
+    }
+    
 }

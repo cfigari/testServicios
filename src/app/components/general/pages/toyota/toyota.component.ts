@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {FormBuilder,FormGroup,Validators} from '@angular/forms'
-import { tap} from 'rxjs'
+import { finalize, tap} from 'rxjs'
 import { AuthService } from '../../services/auth.service';
 import { ServicesService } from '../../services/services.service';
 
@@ -22,99 +22,69 @@ export class ToyotaComponent  {
                private auth:AuthService) { }
 
   token(){
-      this.resp=this.auth.getAuthorizationToken();
+      this.resp=this.auth.getAuthorizationToken("POST");
       this.titulo="Token";
       this.subtitulo=` ${ this.auth.getAutorizationType() }  ( ${this.auth.getAutorizationExpires() })` ; 
   }
 
    parrilla(){
     this.services.parrilla()
-    .pipe(
-         tap( resp =>{
-            this.resp=resp.body;
+    .subscribe(resp =>{ 
+     this.resp=resp.body;
             this.titulo="Parrilla";
             this.subtitulo="cltveh";
-            return resp;
-          } 
-         )
-    )
-    .subscribe(resp =>{    
+            return resp; 
+
     })
    }
 
    cliente(rut:string){
     this.services.cliente(rut)
-    .pipe(
-         tap( resp =>{
-            this.resp=resp.body;
-            this.titulo="cliente";
-            this.subtitulo="cliente?rut=<rut>";
-            console.log(resp)
-            return resp;
-          } 
-         )
-    )
-    .subscribe(resp =>{    
+     .subscribe(resp =>{
+          this.resp=resp.body;
+          this.titulo="cliente";
+          this.subtitulo="cliente?rut=<rut>";
+          console.log(resp)
+          return resp;    
     })
    }
-
 
    vehiculo(patente:string){
+     console.log("OBTENIDO INFORMACION DE VEHICULO")
     this.services.Vehiculo(patente)
-    .pipe(
-         tap( resp =>{
-            this.resp=resp;
-            this.titulo="Vehiculo";
-            this.subtitulo="vehiculo/patente";
-            console.log(resp)
-            return resp;
-          } 
-         )
-    )
-    .subscribe(resp =>{    
+    .subscribe(resp =>{ 
+          this.resp=resp;
+          this.titulo="Vehiculo";
+          this.subtitulo="vehiculo/patente";
+          console.log(resp)
+          return resp; 
     })
    }
 
-
-   
 
    clienteVehiculo(rut:string){
     this.services.ClienteVehiculo(rut)
-    .pipe(
-         tap( resp =>{
-            this.resp=resp;
-            this.titulo="cliente/Vehiculo";
-            this.subtitulo="Cliente/vehiculo?rut=rut";
-            console.log(resp)
-            return resp;
-          } 
-         )
-    )
-    .subscribe(resp =>{    
+     .subscribe(resp =>{  
+          this.resp=resp;
+          this.titulo="cliente/Vehiculo";
+          this.subtitulo="Cliente/vehiculo?rut=rut";
+          console.log(resp)
+          return resp;
+     
     })
    }
  
   
    clienteVehiculoPost(){
     this.services.ClienteVehiculoPost()
-    .pipe(
-         tap( resp =>{
-            this.resp=resp;
-            this.titulo="cliente/Vehiculo Post";
-            this.subtitulo="Cliente/vehiculo";
-            console.log(resp)
-            return resp;
-          } 
-         )
-    )
-    .subscribe(resp =>{    
+     .subscribe(resp =>{
+          this.resp=resp;
+          this.titulo="cliente/Vehiculo Post";
+          this.subtitulo="Cliente/vehiculo";
+          console.log(resp)
+          return resp;    
     })
    }
 
-  // MiFormulario : FormGroup = this.fb.group({
-  //   email:['',[Validators.required,Validators.email]]
-  // });
-
- 
 
 }
