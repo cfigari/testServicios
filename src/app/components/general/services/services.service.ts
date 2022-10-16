@@ -178,6 +178,22 @@ usuariodel(usuario:string):Observable<any>{
 
 }
 
+vinRut(vin:string, rut:string, fecha:string, hora:string, stock:string, origen:string, status:string):Observable<any>{
+  
+  const urlLogin="/vinrut"
+  const body={ "vin":vin,
+                "rut":rut,
+                "fecha":fecha,
+                "hora":hora,
+                "stock":stock,
+                "origen":origen,
+                "status":status
+              };
+
+  return this.http.post<any>(urlLogin,body)
+
+}
+
 
 
 

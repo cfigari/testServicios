@@ -114,6 +114,20 @@ usuariodel(usuario:string){
 
 
 
+vinRut(vin:string, rut:string, fecha:string, hora:string, stock:string, origen:string, status:string){
+  this.services.vinRut(vin, rut, fecha, hora, stock, origen, status)
+  .subscribe(resp =>{
+       this.resp=resp;
+       this.titulo="Insert Update  vinRut";
+       this.subtitulo="Itvis";
+       return resp;
+     } 
+)
+
+}
+
+
+
 
 
 
